@@ -47,8 +47,9 @@ Worker.prototype.toPdf = function toPdf() {
       // Attach each anchor tag based on info from toContainer().
       linkInfo.forEach(function (l) {
         this.prop.pdf.setPage(l.page);
+        const connectingChar = l.link.href.includes('?') ? "&" : "?";
         this.prop.pdf.link(l.left, l.top, l.clientRect.width, l.clientRect.height,
-          { url: `${l.link.href}&utm_source=action_plan` });
+          { url: `${l.link.href}${connectingChar}utm_source=action_plan` });
       }, this);
 
       // Reset the active page of the PDF to the final page.
