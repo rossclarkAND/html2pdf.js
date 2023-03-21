@@ -48,7 +48,7 @@ Worker.prototype.toPdf = function toPdf() {
       linkInfo.forEach(function (l) {
         this.prop.pdf.setPage(l.page);
         this.prop.pdf.link(l.left, l.top, l.clientRect.width, l.clientRect.height,
-          { url: "https://www.google.com/" });
+          { url: `${l.link.href}&utm_source=action_plan` });
       }, this);
 
       // Reset the active page of the PDF to the final page.
