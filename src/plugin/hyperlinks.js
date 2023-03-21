@@ -47,9 +47,16 @@ Worker.prototype.toPdf = function toPdf() {
       // Attach each anchor tag based on info from toContainer().
       linkInfo.forEach(function (l) {
         this.prop.pdf.setPage(l.page);
-        const connectingChar = l.link.href.includes('?') ? "&" : "?";
+        const url = new URL(l.link.href);
+        [
+          ["utm_source", "download"],
+          ["utm_medium", "pdf"],
+          ["utm_id", "action_plan"],
+        ].forEach(([name, value]) => {
+          url.searchParams.set(name, value);
+        });
         this.prop.pdf.link(l.left, l.top, l.clientRect.width, l.clientRect.height,
-          { url: `${l.link.href}${connectingChar}utm_source=download&utm_medium=pdf&utm_id=action_plan` });
+          { url: url.toString() });
       }, this);
 
       // Reset the active page of the PDF to the final page.
