@@ -21,10 +21,10 @@ Worker.prototype.toContainer = function toContainer() {
       linkInfo = [];
 
       // Loop through each anchor tag.
-      Array.prototype.forEach.call(links, function(link) {
+      Array.prototype.forEach.call(links, function (link) {
         // Treat each client rect as a separate link (for text-wrapping).
         var clientRects = link.getClientRects();
-        for (var i=0; i<clientRects.length; i++) {
+        for (var i = 0; i < clientRects.length; i++) {
           var clientRect = unitConvert(clientRects[i], this.prop.pageSize.k);
           clientRect.left -= containerRect.left;
           clientRect.top -= containerRect.top;
@@ -45,10 +45,10 @@ Worker.prototype.toPdf = function toPdf() {
     // Add hyperlinks if the option is enabled.
     if (this.opt.enableLinks) {
       // Attach each anchor tag based on info from toContainer().
-      linkInfo.forEach(function(l) {
+      linkInfo.forEach(function (l) {
         this.prop.pdf.setPage(l.page);
         this.prop.pdf.link(l.left, l.top, l.clientRect.width, l.clientRect.height,
-                           { url: l.link.href });
+          { url: "https://www.google.com/" });
       }, this);
 
       // Reset the active page of the PDF to the final page.

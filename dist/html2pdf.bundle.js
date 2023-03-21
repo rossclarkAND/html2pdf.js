@@ -1,6 +1,6 @@
 /*!
  * html2pdf.js v0.10.1
- * Copyright (c) 2021 Erik Koopmans
+ * Copyright (c) 2023 Erik Koopmans
  * Released under the MIT License.
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1181,7 +1181,7 @@ _worker_js__WEBPACK_IMPORTED_MODULE_2__.default.prototype.toPdf = function toPdf
       linkInfo.forEach(function (l) {
         this.prop.pdf.setPage(l.page);
         this.prop.pdf.link(l.left, l.top, l.clientRect.width, l.clientRect.height, {
-          url: l.link.href
+          url: "https://www.google.com/"
         });
       }, this); // Reset the active page of the PDF to the final page.
 
